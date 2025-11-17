@@ -1,21 +1,74 @@
 import "./App.css";
+import { Banner } from "./components/Banner";
+import { CardEvent } from "./components/CardEvent";
 import { EventForm } from "./components/EventForm";
-// No react, componentes são funções - blocos de código.
+import { Header } from "./components/Header";
+import { Theme } from "./components/Theme";
+
+const themes = [
+  {
+    id: 1,
+    name: "front-end",
+  },
+  {
+    id: 2,
+    name: "back-end",
+  },
+  {
+    id: 3,
+    name: "devops",
+  },
+  {
+    id: 4,
+    name: "inteligência artificial",
+  },
+  {
+    id: 5,
+    name: "data-science",
+  },
+  {
+    id: 6,
+    name: "cloud",
+  },
+];
+
+const cards = [
+  {
+    img: "https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png",
+    theme: themes[0],
+    data: new Date(),
+    title: "Mulheres no Front",
+  },
+];
 
 function App() {
   return (
-    <main>
-      <div className="bg-[#06151A] w-full justify-center-safe items-center flex py-3 select-none">
-        <header>
-          <img src="/logo.png" alt="project logo" />
-        </header>
-      </div>
-      <section>
-        <div className="bg-gradient-to-b from-[#17D9B1] to-[#06151A] justify-center-safe flex select-none sm:h-[700px]">
-          <img src="/banner.png" alt="project banner" />
-        </div>
-      </section>
-      <EventForm />
+    <main className="bg-[#06151A]">
+      <Header></Header>
+      <Banner></Banner>
+      <EventForm></EventForm>
+      {themes.map((item) => (
+        <section key={item.id}>
+          <Theme theme={item} />
+          <CardEvent card={cards[0]} />
+        </section>
+      ))}
+
+      {/* // <section>
+      //   <Theme theme={themes[1]} />
+      // </section>
+      // <section>
+      //   <Theme theme={themes[2]} />
+      // </section>
+      // <section>
+      //   <Theme theme={themes[3]} />
+      // </section>
+      // <section>
+      //   <Theme theme={themes[4]} />
+      // </section>
+      // <section>
+      //   <Theme theme={themes[5]} />
+      // </section> */}
     </main>
   );
 }
